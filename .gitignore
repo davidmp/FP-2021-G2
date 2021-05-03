@@ -1,4 +1,6 @@
 *.replit
+*.class
+*.jar
 #**/*
 !**/*.cpp
 !**/*.dart
