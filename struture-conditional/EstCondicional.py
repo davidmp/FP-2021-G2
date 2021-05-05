@@ -47,7 +47,7 @@ def muestraMenorEdad():
   #Datos de Salida
   print("La(a) persona(s)", pnombre, " tiene(n):", pedad) 
 
-def calcularBonoDMP():
+def calcularBono():
   #Defenir Variables
   bonoSueldo, bonoantiguedad, bonoMayor=0.0,0.0,0.0
   #Datos de entrada
@@ -74,4 +74,4 @@ def calcularBonoDMP():
   print("El bono mayor es:", bonoMayor)
 
 #ejercicio01()
-#muestraMenorEdad()
+muestraMenorEdad()
