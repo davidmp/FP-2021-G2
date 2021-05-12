@@ -21,10 +21,10 @@ public class StrRepetitive {
         double numeros, sumaNumeros=0;
         //Datos de Entrada y proceso
         while(contador<10){  //++contador    contador++
-            System.out.println("Ingrese el valor de la posicion "+(++contador)+":");
+            ++contador;
+            System.out.println("Ingrese el valor de la posicion "+contador+":");
             numeros=teclado.nextDouble();
-            sumaNumeros=sumaNumeros+numeros;
-            
+            sumaNumeros=sumaNumeros+numeros;            
         }
         //Datos de salida
         System.out.println("La suma de los 10 numeros es:"+sumaNumeros);        
@@ -35,8 +35,9 @@ public class StrRepetitive {
           int contador=0;
           double numeros, sumaNumeros=0;
           //Datos de Entrada y proceso
-         do{  //++contador    contador++
-              System.out.println("Ingrese el valor de la posicion "+(++contador)+":");
+         do{  //++contador:primero incrementa el valor     contador++: imprime el valor luego incrementa
+              ++contador;
+              System.out.println("Ingrese el valor de la posicion "+(contador)+":");
               numeros=teclado.nextDouble();
               sumaNumeros=sumaNumeros+numeros;
               
@@ -44,13 +45,13 @@ public class StrRepetitive {
           //Datos de salida
           System.out.println("La suma de los 10 numeros es:"+sumaNumeros);        
       }    
-
+        
       public static void suma10NumerosParaHasta() {
         //definir Variables
           double numeros, sumaNumeros=0;
           //Datos de Entrada y proceso
           for(int contador=1;contador<=10; contador++){
-              System.out.println("Ingrese el valor de la posicion "+(contador)+":");
+              System.out.println("Ingrese el valor de la posicion "+contador+":");
               numeros=teclado.nextDouble();
               sumaNumeros=sumaNumeros+numeros;              
           }
