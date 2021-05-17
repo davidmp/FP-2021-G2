@@ -59,13 +59,30 @@ public class StrRepetitive {
           System.out.println("La suma de los 10 numeros es:"+sumaNumeros);        
       }       
 
+    public static void menuMain(){
+        String mensaje="Seleccion el algoritmo que desea ejecutar:"+
+        "\n1=suma10NumerosMientras"+
+        "\n2=suma10NumerosHacerMientras "+
+        "\n3=suma10NumerosPara"+
+        "\n0=Salir del programa";
+        
+        System.out.println(mensaje);
+        int opcion=0;
+        do{
+            opcion=objTeclado.nextInt();
+            switch(opcion){
+                case 1: suma10NumerosMientras();break;
+                case 2: suma10NumerosHacerMientras();;break;
+                case 3: suma10NumerosPara();;break;
+                case 4: suma10NumerosMientras();break;
+            }
+            if(opcion!=0)
+            System.out.println("\n Desea seguir probando: "+mensaje);
+            
+        }while(opcion!=0);        
+    }
     public static void main(String[] args) {
-      /*  System.out.println("Hola");
-        saludo();
-        name5(); */
-        //suma10NumerosMientras();
-        //suma10NumerosHacerMientras();
-        suma10NumerosParaHasta();
+    menuMain();
     }
 
 
