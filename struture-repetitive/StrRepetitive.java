@@ -69,11 +69,11 @@ public class StrRepetitive {
         System.out.println(mensaje);
         int opcion=0;
         do{
-            opcion=objTeclado.nextInt();
+            opcion=teclado.nextInt();
             switch(opcion){
                 case 1: suma10NumerosMientras();break;
                 case 2: suma10NumerosHacerMientras();;break;
-                case 3: suma10NumerosPara();;break;
+                case 3: suma10NumerosParaHasta();;break;
                 case 4: suma10NumerosMientras();break;
             }
             if(opcion!=0)
