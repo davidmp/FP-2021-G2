@@ -64,6 +64,7 @@ public class StrRepetitive {
         "\n1=suma10NumerosMientras"+
         "\n2=suma10NumerosHacerMientras "+
         "\n3=suma10NumerosPara"+
+        "\n4=numerosParesHasta100"+
         "\n0=Salir del programa";
         
         System.out.println(mensaje);
@@ -72,15 +73,25 @@ public class StrRepetitive {
             opcion=teclado.nextInt();
             switch(opcion){
                 case 1: suma10NumerosMientras();break;
-                case 2: suma10NumerosHacerMientras();;break;
-                case 3: suma10NumerosParaHasta();;break;
-                case 4: suma10NumerosMientras();break;
+                case 2: suma10NumerosHacerMientras();break;
+                case 3: suma10NumerosParaHasta();break;
+                case 4: numerosParesHasta100();break;
             }
             if(opcion!=0)
             System.out.println("\n Desea seguir probando: "+mensaje);
             
         }while(opcion!=0);        
     }
+
+    public static void numerosParesHasta100(){
+      for(int contador=0;contador<100; contador++){
+        if(contador%2==0){
+          System.out.println("El numero "+contador+" es numero par");
+        }
+      }
+    }
+
+
     public static void main(String[] args) {
     menuMain();
     }
