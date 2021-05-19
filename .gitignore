@@ -1,6 +1,7 @@
 *.replit
 *.class
 *.jar
+**.vscode
 #**/*
 !**/*.cpp
 !**/*.dart
