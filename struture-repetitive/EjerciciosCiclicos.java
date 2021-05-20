@@ -11,7 +11,7 @@ public class EjerciciosCiclicos {
         System.out.println("Ingrese N cantidad de Focos:");
         nFocos=teclado.nextInt();
         //Proceso
-        for (int foco = 1; foco <= nFocos; foco++) {
+        for (int foco=1; foco<=nFocos; foco++) {
             System.out.print("Ingrese el color (V=Verde, B=Blanco y R=Rojo)"+
             "del foco # "+foco+":");
             String color=teclado.next();
