@@ -44,9 +44,8 @@ public class OperacionesMat {
         System.out.println(mensaje);
         String valorX=inputT.next();  
         double result=0;
-        if(!isNumber(valorX)){
-            leer(valor, mensaje);
-            result= 0;
+        if(!isNumber(valorX)){            
+            result= leer(valor, mensaje);
         }else{
             result= Double.parseDouble(valorX);            
         }  
