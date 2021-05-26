@@ -1,6 +1,5 @@
 package pe.edu.upeu;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class OperacionesMat {
@@ -33,8 +32,7 @@ public class OperacionesMat {
         try {
             Double.parseDouble(valor);
             resultado=true;
-        } catch (NumberFormatException e) {
-            //TODO: handle exception
+        } catch (NumberFormatException e) {            
             resultado=false;
         }
         return resultado;
@@ -45,7 +43,7 @@ public class OperacionesMat {
         String valorX=inputT.next();  
         double result=0;
         if(!isNumber(valorX)){            
-            result= leer(valor, mensaje);
+            result=leer(valor, mensaje);
         }else{
             result= Double.parseDouble(valorX);            
         }  
