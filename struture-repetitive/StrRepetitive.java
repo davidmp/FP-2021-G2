@@ -94,10 +94,7 @@ public class StrRepetitive {
     }
 
     public static void numeroFibonaci(){
-      int numAnt=0;
-      int numNue=1;
-      int numTem=0;
-      int contador=1;
+      int numAnt=0, numNue=1,numTem=0,contador=1;
       System.out.println("Numero Fibonaci");
       int numFinal=teclado.nextInt();
       while(contador<numFinal){
@@ -105,7 +102,6 @@ public class StrRepetitive {
         numNue=numAnt+numNue;
         numAnt=numTem;     
         contador++;
-        //System.out.println("El numero Fibonci es:"+numNue);
       }
       System.out.println("Numero fibonaci de "+numFinal+" es: "+numNue);
     }
