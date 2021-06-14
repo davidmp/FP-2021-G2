@@ -1,4 +1,4 @@
-package pe.edu.upeu;
+package pe.edu.upeu.app;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

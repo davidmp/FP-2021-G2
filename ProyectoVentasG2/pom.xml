@@ -33,7 +33,7 @@
     <configuration>
     <archive>
     <manifest>
-    <mainClass>pe.edu.upeu.App</mainClass>
+    <mainClass>pe.edu.upeu.app.App</mainClass>
     </manifest>
     </archive>
     </configuration>
