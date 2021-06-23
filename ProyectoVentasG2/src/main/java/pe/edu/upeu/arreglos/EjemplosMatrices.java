@@ -100,15 +100,36 @@ public class EjemplosMatrices {
         imprimirContenidoMatrizEnteros(productos);
     }
 
+    private void calcularPositivosNegativosCerosM(int[][] matriz) {
+        int cantNeg=0, cantPos=0, canCeros=0;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                if (matriz[i][j]<0) {
+                    System.out.println("iF="+i+" iC="+j+" V.Negativo="+matriz[i][j]);
+                    cantNeg++;
+                }else if(matriz[i][j]==0){
+                    System.out.println("iF="+i+" iC="+j+" V.Cero="+matriz[i][j]);
+                    canCeros++;
+                }else{
+                    System.out.println("iF="+i+" iC="+j+" V.Positivo="+matriz[i][j]);
+                    cantPos++;
+                }
+            }         
+
+        }
+         System.out.println("Cantidad Negativos es:"+cantNeg);
+         System.out.println("Cantidad Positivos es:"+cantPos);
+         System.out.println("Cantidad ceros es:"+canCeros);
+    }
 
     
     public static void main(String[] args) {
         EjemplosMatrices em=new EjemplosMatrices();
         int[][] matriz={
             {5,	6,	6},
-            {5,	6,	2},
-            {5,	6,	2},
-            {5,	6,	2}
+            {5,	-6,	2},
+            {0,	6,	2},
+            {5,	0,	-2}
             };  
         int[][] matrizy;           
         em.sumarContenidoMatriz();
@@ -118,6 +139,8 @@ public class EjemplosMatrices {
         System.out.println("funciones valor:"+matrizy[0][0]);
         System.out.println("Atributos:"+matriz.length);
         em.registroProductos();
+        System.out.println("");
+        em.calcularPositivosNegativosCerosM(matriz);
     }
 
 
