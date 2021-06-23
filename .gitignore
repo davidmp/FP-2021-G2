@@ -1,8 +1,8 @@
 *.replit
 *.class
 *.jar
-target
 **.vscode
+**/target/*
 #**/*
 !**/*.cpp
 !**/*.dart
