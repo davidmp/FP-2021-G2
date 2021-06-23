@@ -54,6 +54,54 @@ public class EjemplosMatrices {
         System.out.println("La suma de los valores/elementos de la matriz es:"+sumaValores);              
     }    
 
+    public void imprimirContenidoMatrizEnteros(int[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(matriz[i][j]+"\t");
+            }
+            System.out.println("");
+        }        
+    }
+    public void imprimirContenidoMatrizEnteros(double[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(matriz[i][j]+"\t");
+            }
+            System.out.println("");
+        }         
+    }
+    public void imprimirContenidoMatrizEnteros(Object[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(matriz[i][j]+"\t");
+            }
+            System.out.println("");
+        }         
+    }    
+    public void imprimirContenidoMatrizEnteros(String[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(matriz[i][j]+"\t");
+            }
+            System.out.println("");
+        }         
+    } 
+
+    public void registroProductos() {
+        /*
+        P0002	Pera	4.6	20
+        P0003	Naranza	2	2        
+        */ 
+        Object[][] productos={
+                {"P0001","Manzana",3.5,50},
+                {"P0002","Pera",4.6,20},
+                {"P0003","Naranza",2,2}
+        };
+        imprimirContenidoMatrizEnteros(productos);
+    }
+
+
+    
     public static void main(String[] args) {
         EjemplosMatrices em=new EjemplosMatrices();
         int[][] matriz={
@@ -62,9 +110,14 @@ public class EjemplosMatrices {
             {5,	6,	2},
             {5,	6,	2}
             };  
+        int[][] matrizy;           
         em.sumarContenidoMatriz();
         em.sumarContenidoMatrizConParametrosE(matriz);
-
+        em.imprimirContenidoMatrizEnteros(matriz);
+        matrizy=matriz;
+        System.out.println("funciones valor:"+matrizy[0][0]);
+        System.out.println("Atributos:"+matriz.length);
+        em.registroProductos();
     }
 
 
