@@ -23,7 +23,6 @@ public class App {
         CategoriaDao daoC=new CategoriaDao();
         Object[][] catData=daoC.crearCategoria();
         daoC.reporteCategoria(catData);
-
                 
         //new MainGUI();
     }
