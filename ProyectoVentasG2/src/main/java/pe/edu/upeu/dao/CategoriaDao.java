@@ -31,4 +31,27 @@ public class CategoriaDao extends AppCrud {
         //listarContenido(aq);
         imprimirLista(data);
     }
+
+    public void reporteCategoria() {
+        System.out.println("-------------Reporte de Categoria------------");
+        lar=new LeerArchivo("Categoria.txt");
+       Object[][] data=listarContenido(lar);
+        String dataX="";
+        ut.pintarLine('H',14);
+        ut.pintarTextHeadBody('H', 3, "ID,Noombre"); 
+        System.out.println("");
+        ut.pintarLine('H',14);
+       
+       for (int i = 0; i < data.length; i++) {
+           for (int j = 0; j < data[0].length; j++) {
+               if(j==0){
+                dataX+=""+data[i][j];
+               }else{
+                dataX+=","+data[i][j]; 
+               }               
+           }
+           ut.pintarTextHeadBody('B', 3, dataX);  
+           dataX="";
+       }        
+    }    
 }

@@ -36,7 +36,7 @@ public class UtilsX {
        System.out.println("-------------------------------------------------"); 
     }  
 
-    public static void pintarLine(char horient, int sizen) {
+    public  void pintarLine(char horient, int sizen) {
         for (int i = 0; i <= (sizen); i++) {
             if (horient=='H') {
                 if(i==sizen){
@@ -52,7 +52,7 @@ public class UtilsX {
         }
     }
 
-    public static void pintarTextHeadBody(char type, int sizen, String content) {        
+    public void pintarTextHeadBody(char type, int sizen, String content) {        
         int sizeX=sizen>=2?4*sizen:4;
         System.out.print("|");
         String[] data=content.split(",");        

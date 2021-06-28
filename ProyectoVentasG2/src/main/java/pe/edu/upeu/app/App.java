@@ -21,8 +21,8 @@ public class App {
         System.out.println( "Hello World!" );        
         LeerTeclado lt=new LeerTeclado();
         CategoriaDao daoC=new CategoriaDao();
-        Object[][] catData=daoC.crearCategoria();
-        daoC.reporteCategoria(catData);
+        //daoC.crearCategoria();
+        daoC.reporteCategoria();
                 
         //new MainGUI();
     }
