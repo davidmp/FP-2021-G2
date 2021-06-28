@@ -39,7 +39,7 @@ public class TransformadasM {
         }  
         imprimirContenidoMatrizEnteros(matriz);              
     }    
-    
+
     public void imprimirContenidoMatrizEnteros(Object[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
@@ -62,9 +62,9 @@ public class TransformadasM {
     
     public static void main(String[] args) {    
         TransformadasM tm=new TransformadasM();  
-        tm.transformada01(5, 0);  
+        tm.transformada01(10, 1);  
         System.out.println("");
-        tm.transformada01x(5,0);    
+        tm.transformada01x(10,1);    
     }
 
 }
