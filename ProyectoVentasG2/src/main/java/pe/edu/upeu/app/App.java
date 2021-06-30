@@ -1,6 +1,9 @@
 package pe.edu.upeu.app;
 
+import java.io.Console;
+
 import pe.edu.upeu.dao.CategoriaDao;
+import pe.edu.upeu.dao.UsuarioDao;
 import pe.edu.upeu.gui.MainGUI;
 import pe.edu.upeu.modelo.CategoriaTO;
 import pe.edu.upeu.modelo.ProductoTO;
@@ -26,10 +29,12 @@ public class App {
         "\n21=Reportar Producto"+
         "\n22=Modificar Producto"+
         "\n3=Realizar Venta"+
+        "\n4=Registrar Usuario"+
         "\n0=Salir del programa";
         LeerTeclado lt=new LeerTeclado(); 
         UtilsX ut=new UtilsX();
         CategoriaDao daoC;       
+        UsuarioDao daoUso;
         int opcion=0;
         opcion=lt.leer(0, mensaje);
         do{            
@@ -42,7 +47,7 @@ public class App {
                 daoC=new CategoriaDao(); daoC.reporteCategoria(); break;    
                 case 2: break;
                 case 3: break;
-                case 4: break;
+                case 4: daoUso=new UsuarioDao(); daoUso.crearNuevoUsuario(); break;
                 case 5: break;
                 default: System.out.println("La opcion que eligio no exuiste!");
                 break;
@@ -55,8 +60,24 @@ public class App {
         }while(opcion!=0);        
     }
 
+    public static void validarAcceso() {
+        LeerTeclado lt=new LeerTeclado(); 
+        Console  constx= System.console();
+        String usuario=lt.leer("", "Ingrese su usuario:");
+        System.out.println("Ingrese su clave:");
+        char[] clave=constx.readPassword();
+        UsuarioDao usuDao=new UsuarioDao();
+        if(usuDao.login(usuario, clave)){
+            menuMain(); 
+        }else{
+            System.out.println("Intente Nuevamente!!");
+            validarAcceso();
+        }
+    }
+
     public static void main( String[] args ){
-        menuMain();       
+        validarAcceso();       
+        //menuMain(); 
         //new MainGUI();
     }
 }
