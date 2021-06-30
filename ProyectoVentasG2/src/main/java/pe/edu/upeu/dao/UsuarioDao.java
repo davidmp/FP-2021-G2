@@ -21,17 +21,17 @@ public class UsuarioDao extends AppCrud{
         String user=lte.leer("", "Ingrese un usuario:").toLowerCase();
         if(validarExistUser(user)){
             usTO.setUsuario(user);
+            usTO.setIdUsuario(generarId(lar, 0, "U", 1));
+            usTO.setPerfil(lte.leer("", "Ingrese el Perfil del Usuario (ADMIN, VENDEDOR):").toUpperCase());        
+            Console  constx= System.console();
+            System.out.println("Ingrese Clave:");
+            char[] clave=constx.readPassword();
+            usTO.setClave(String.valueOf(clave));
+            agregarContenido(lar, usTO);            
         }else{
            System.out.println("Eliga otro usuario:"); 
            crearNuevoUsuario();
         }
-        usTO.setIdUsuario(generarId(lar, 0, "U", 1));
-        usTO.setPerfil(lte.leer("", "Ingrese el Perfil del Usuario (ADMIN, VENDEDOR):").toUpperCase());        
-        Console  constx= System.console();
-        System.out.println("Ingrese Clave:");
-        char[] clave=constx.readPassword();
-        usTO.setClave(String.valueOf(clave));
-        agregarContenido(lar, usTO);
     }
 
     public boolean login(String usuario, char[] clave) {
@@ -46,10 +46,11 @@ public class UsuarioDao extends AppCrud{
     public boolean validarExistUser(String user) {
         lar=new LeerArchivo("Usuario.txt");
        Object[][] data=buscarContenido(lar, 1, user);  
-       if(data==null){
-        return true;
+       if(data!=null && data.length>0){
+           System.out.println("-----ya existe otro usuario con ese nombre-----");
+        return false;
        }
-       return false;
+       return true;
     }
 
 }
