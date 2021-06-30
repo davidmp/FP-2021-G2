@@ -5,6 +5,7 @@ import pe.edu.upeu.gui.MainGUI;
 import pe.edu.upeu.modelo.CategoriaTO;
 import pe.edu.upeu.modelo.ProductoTO;
 import pe.edu.upeu.util.LeerTeclado;
+import pe.edu.upeu.util.UtilsX;
 
 /**
  * Hello world!
@@ -27,14 +28,17 @@ public class App {
         "\n3=Realizar Venta"+
         "\n0=Salir del programa";
         LeerTeclado lt=new LeerTeclado(); 
+        UtilsX ut=new UtilsX();
         CategoriaDao daoC;       
         int opcion=0;
-        do{
-            opcion=lt.leer(0, mensaje);
+        opcion=lt.leer(0, mensaje);
+        do{            
             switch(opcion){
-                case 1:
-                daoC=new CategoriaDao(); daoC.crearCategoria(); break;
+                case 1:                
+                daoC=new CategoriaDao(); daoC.crearCategoria(); 
+                ut.clearConsole(); break;
                 case 12: 
+                ut.clearConsole();
                 daoC=new CategoriaDao(); daoC.reporteCategoria(); break;    
                 case 2: break;
                 case 3: break;
@@ -43,8 +47,10 @@ public class App {
                 default: System.out.println("La opcion que eligio no exuiste!");
                 break;
             }
-            if(opcion!=0)
-            System.out.println("\n Desea seguir probando: "+mensaje);
+            if(opcion!=0){
+                System.out.println("\nDesea seguir probando: ");
+                opcion=lt.leer(0, mensaje);
+            }
             
         }while(opcion!=0);        
     }

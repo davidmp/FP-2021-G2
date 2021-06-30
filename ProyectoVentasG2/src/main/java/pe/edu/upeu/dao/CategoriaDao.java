@@ -37,10 +37,10 @@ public class CategoriaDao extends AppCrud {
         lar=new LeerArchivo("Categoria.txt");
        Object[][] data=listarContenido(lar);
         String dataX="";
-        ut.pintarLine('H',14);
+        ut.pintarLine('H',13);
         ut.pintarTextHeadBody('H', 3, "ID,Noombre"); 
         System.out.println("");
-        ut.pintarLine('H',14);
+        ut.pintarLine('H',13);
        
        for (int i = 0; i < data.length; i++) {
            for (int j = 0; j < data[0].length; j++) {
