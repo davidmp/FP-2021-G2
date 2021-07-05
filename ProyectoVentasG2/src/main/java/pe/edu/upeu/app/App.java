@@ -5,6 +5,7 @@ import java.io.Console;
 import pe.edu.upeu.dao.CategoriaDao;
 import pe.edu.upeu.dao.ProductoDao;
 import pe.edu.upeu.dao.UsuarioDao;
+import pe.edu.upeu.dao.VentaDao;
 import pe.edu.upeu.gui.MainGUI;
 import pe.edu.upeu.modelo.CategoriaTO;
 import pe.edu.upeu.modelo.ProductoTO;
@@ -37,6 +38,7 @@ public class App {
         CategoriaDao daoC;       
         UsuarioDao daoUso;
         ProductoDao proDao;
+        VentaDao venDao;
         int opcion=0;
         opcion=lt.leer(0, mensaje);
         do{            
@@ -49,7 +51,7 @@ public class App {
                 daoC=new CategoriaDao(); daoC.reporteCategoria(); break;    
                 case 2: proDao=new ProductoDao(); proDao.crearProducto(); break;
                 case 21: proDao=new ProductoDao(); proDao.reporteProducto(); break;
-                case 3: break;
+                case 3: venDao=new VentaDao(); venDao.registroVentaGeneral(); break;
                 case 4: daoUso=new UsuarioDao(); daoUso.crearNuevoUsuario(); break;
                 case 5: break;
                 default: System.out.println("La opcion que eligio no exuiste!");
