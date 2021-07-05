@@ -45,10 +45,10 @@ public class ProductoDao extends AppCrud {
         lar=new LeerArchivo("Producto.txt");
        Object[][] data=listarContenido(lar);
         String dataX="";
-        ut.pintarLine('H',40);
-        ut.pintarTextHeadBody('H', 2, "ID,Noombre,U.Medida,IdCat,P.Unit,Porcent.Util,Stock"); 
+        ut.pintarLine('H',35);
+        ut.pintarTextHeadBody('H', 2, "ID,Noombre,U.Medida,IdCat,P.Unit,%.Util,Stock"); 
         System.out.println("");
-        ut.pintarLine('H',40);
+        ut.pintarLine('H',35);
        
        for (int i = 0; i < data.length; i++) {
            for (int j = 0; j < data[0].length; j++) {
