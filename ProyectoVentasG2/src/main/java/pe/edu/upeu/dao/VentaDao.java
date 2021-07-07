@@ -12,6 +12,16 @@ import pe.edu.upeu.util.LeerTeclado;
 import pe.edu.upeu.util.UtilsX;
 
 public class VentaDao extends AppCrud{
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
     LeerArchivo lar;
     LeerTeclado lte=new LeerTeclado();
     UtilsX ut=new UtilsX();
@@ -147,8 +157,9 @@ public class VentaDao extends AppCrud{
         }
         System.out.println("");
         ut.pintarLine('H', 40);
-        System.out.println("Total Neto Ventas: S/."+(Math.round(netoTotalX*100.0)/100.0)+" | "+
-        "Total IGV a pagar:S/."+(Math.round(igvX*100.0)/100.0)+" | "+"Monto Recaudado: S/."+(Math.round(precioTotalX*100.0)/100.0));
+        //System.out.println(ANSI_RED + "This text is red!" + ANSI_RESET);
+        System.out.println(ANSI_RED +"Total Neto Ventas: S/."+ ANSI_RESET+(Math.round(netoTotalX*100.0)/100.0)+ANSI_RED +" | "+
+        "Total IGV a pagar:S/."+ ANSI_RESET+(Math.round(igvX*100.0)/100.0)+ANSI_RED +" | "+"Monto Recaudado: S/."+ ANSI_RESET+(Math.round(precioTotalX*100.0)/100.0));
         ut.pintarLine('H', 40);
 
 
