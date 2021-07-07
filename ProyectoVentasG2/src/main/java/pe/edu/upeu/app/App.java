@@ -31,6 +31,7 @@ public class App {
         "\n21=Reportar Producto"+
         "\n22=Modificar Producto"+
         "\n3=Realizar Venta"+
+        "\n31=Reporte de Venta en Rango de Fechas"+
         "\n4=Registrar Usuario"+
         "\n0=Salir del programa";
         LeerTeclado lt=new LeerTeclado(); 
@@ -52,6 +53,7 @@ public class App {
                 case 2: proDao=new ProductoDao(); proDao.crearProducto(); break;
                 case 21: proDao=new ProductoDao(); proDao.reporteProducto(); break;
                 case 3: venDao=new VentaDao(); venDao.registroVentaGeneral(); break;
+                case 31: venDao=new VentaDao(); venDao.reporteVentasRangoFecha(); break;
                 case 4: daoUso=new UsuarioDao(); daoUso.crearNuevoUsuario(); break;
                 case 5: break;
                 default: System.out.println("La opcion que eligio no exuiste!");

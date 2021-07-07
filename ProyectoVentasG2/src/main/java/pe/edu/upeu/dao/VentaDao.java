@@ -80,8 +80,6 @@ public class VentaDao extends AppCrud{
         return vdTO;
     }
 
-
-
     public void mostrarProductos() {
         ut.clearConsole();
         System.out.println("*******Agregar Productos a carrito de ventas******");
@@ -96,6 +94,67 @@ public class VentaDao extends AppCrud{
         System.out.println("");
     }
 
+    public void reporteVentasRangoFecha() {
+        System.out.println("*******************Reporte de Ventas por fechas*****************");
+        String fechaIni=lte.leer("", "Ingrese Fecha de Inicio (dd-MM-yyy):");
+        String fechaFin=lte.leer("", "Ingrese Fecha Final (dd-MM-yyy):");
+        lar=new LeerArchivo("Venta.txt");
+        Object[][] dataV=listarContenido(lar);
+        int contarVentasRF=0;
+        try {
+            for (int fila = 0; fila < dataV.length; fila++) {
+                String[] fechaVenta=String.valueOf(dataV[fila][2]).split(" ");
+                System.out.println("Datos Fecha:"+fechaVenta[0]+"  Fecha Teclado:"+formatoFecha.format(formatoFecha.parse(fechaIni)));
+                Date fechaVentaX=formatoFecha.parse(fechaVenta[0]);
+                if ( 
+                    (fechaVentaX.after(formatoFecha.parse(fechaIni)) || fechaVenta[0].equals(fechaIni)) && 
+                    (fechaVentaX.before(formatoFecha.parse(fechaFin)) || fechaVenta[0].equals(fechaFin))
+                ) {
+                    contarVentasRF=contarVentasRF+1;
+                }
+            }
+            Object[][] dataVRF=new Object[contarVentasRF][dataV[0].length];
+            int filaIndice=0;
+            double netoTotalX=0, igvX=0, precioTotalX=0;
+            for (int fila = 0; fila < dataV.length; fila++) {
+                String[] fechaVenta=String.valueOf(dataV[fila][2]).split(" ");
+                Date fechaVentaX=formatoFecha.parse(fechaVenta[0]);
+                if ( 
+                    (fechaVentaX.after(formatoFecha.parse(fechaIni)) || fechaVenta[0].equals(fechaIni)) && 
+                    (fechaVentaX.before(formatoFecha.parse(fechaFin)) || fechaVenta[0].equals(fechaFin))
+                ) {
+                    for (int columna = 0; columna < dataV[0].length; columna++) {
+                        dataVRF[filaIndice][columna]=dataV[fila][columna];
+                        if(columna==3){netoTotalX+=Double.parseDouble(String.valueOf(dataV[fila][columna]));}
+                        if(columna==4){igvX+=Double.parseDouble(String.valueOf(dataV[fila][columna]));}
+                        if(columna==5){precioTotalX+=Double.parseDouble(String.valueOf(dataV[fila][columna]));}                        
+                    }
+                    filaIndice++;
+                }
+            }
+
+        //ut.clearConsole();
+        System.out.println("Datos"+dataVRF.length);
+        System.out.println("************************Reporte de ventas************************");
+        System.out.println("---------------Entre "+fechaIni + " a "+fechaFin+"----------------");
+        ut.pintarLine('H', 40);
+        ut.pintarTextHeadBody('H', 3, "ID,DNI Cliente,F.Venta,Imp.Neto,IGV,Pre.Total");
+        System.out.println("");
+        ut.pintarLine('H', 40);
+        for (Object[] objects : dataVRF) {           
+            String dataCadena=""+objects[0]+","+objects[1]+","+objects[2]+","+objects[3]+","+objects[4]+","+objects[5];
+            ut.pintarTextHeadBody('B', 3, dataCadena);
+        }
+        System.out.println("");
+        ut.pintarLine('H', 40);
+        System.out.println("Total Neto Ventas: S/."+(Math.round(netoTotalX*100.0)/100.0)+" | "+
+        "Total IGV a pagar:S/."+(Math.round(igvX*100.0)/100.0)+" | "+"Monto Recaudado: S/."+(Math.round(precioTotalX*100.0)/100.0));
+        ut.pintarLine('H', 40);
+
+
+        } catch (Exception e) {           
+        }
+    }
 
 
 }
