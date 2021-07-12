@@ -11,8 +11,13 @@ import pe.edu.upeu.util.LeerArchivo;
 import pe.edu.upeu.util.LeerTeclado;
 import pe.edu.upeu.util.UtilsX;
 
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.Color.*;
+
 public class VentaDao extends AppCrud{
-    public static final String ANSI_RESET = "\u001B[0m";
+    /*public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -20,7 +25,7 @@ public class VentaDao extends AppCrud{
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String ANSI_WHITE = "\u001B[37m";*/
 
     LeerArchivo lar;
     LeerTeclado lte=new LeerTeclado();
@@ -105,6 +110,7 @@ public class VentaDao extends AppCrud{
     }
 
     public void reporteVentasRangoFecha() {
+        AnsiConsole.systemInstall();
         System.out.println("*******************Reporte de Ventas por fechas*****************");
         String fechaIni=lte.leer("", "Ingrese Fecha de Inicio (dd-MM-yyy):");
         String fechaFin=lte.leer("", "Ingrese Fecha Final (dd-MM-yyy):");
@@ -143,25 +149,33 @@ public class VentaDao extends AppCrud{
                 }
             }
 
-        //ut.clearConsole();
-        System.out.println("Datos"+dataVRF.length);
+        ut.clearConsole();
+        //System.out.println("Datos"+dataVRF.length);
         System.out.println("************************Reporte de ventas************************");
         System.out.println("---------------Entre "+fechaIni + " a "+fechaFin+"----------------");
-        ut.pintarLine('H', 40);
+        ut.pintarLine('H', 45);
         ut.pintarTextHeadBody('H', 3, "ID,DNI Cliente,F.Venta,Imp.Neto,IGV,Pre.Total");
         System.out.println("");
-        ut.pintarLine('H', 40);
+        ut.pintarLine('H', 45);
         for (Object[] objects : dataVRF) {           
             String dataCadena=""+objects[0]+","+objects[1]+","+objects[2]+","+objects[3]+","+objects[4]+","+objects[5];
             ut.pintarTextHeadBody('B', 3, dataCadena);
         }
         System.out.println("");
-        ut.pintarLine('H', 40);
-        //System.out.println(ANSI_RED + "This text is red!" + ANSI_RESET);
-        System.out.println(ANSI_RED +"Total Neto Ventas: S/."+ ANSI_RESET+(Math.round(netoTotalX*100.0)/100.0)+ANSI_RED +" | "+
-        "Total IGV a pagar:S/."+ ANSI_RESET+(Math.round(igvX*100.0)/100.0)+ANSI_RED +" | "+"Monto Recaudado: S/."+ ANSI_RESET+(Math.round(precioTotalX*100.0)/100.0));
-        ut.pintarLine('H', 40);
-
+        ut.pintarLine('H', 45);
+        Ansi colorX=new Ansi();
+        
+        /*System.out.println("Total Neto Ventas: S/."+(Math.round(netoTotalX*100.0)/100.0)+" | "+
+        "Total IGV a pagar:S/."+ (Math.round(igvX*100.0)/100.0)+" | "+"Monto Recaudado: S/."+ (Math.round(precioTotalX*100.0)/100.0));
+        ut.pintarLine('H', 40);*/
+        //System.out.println(colorX.bgBrightYellow().fgRed().a("***************Resumen de Ventas***********").reset());
+        //ut.pintarLine('H', 45);    
+        System.out.println(colorX.render("@|red Total Neto Ventas: S/.|@ @|green "+(Math.round(netoTotalX*100.0)/100.0)+"|@ | @|red "+
+        "Total IGV a pagar:S/. |@ @|green "+ (Math.round(igvX*100.0)/100.0)+"|@ | @|red "+"Monto Recaudado: S/.|@ @|green "+
+         (Math.round(precioTotalX*100.0)/100.0)+"|@"));
+        ut.pintarLine('H', 45);        
+        //System.out.println(colorX.fg(RED).a("Hello").fg(GREEN).a(" World").reset());
+        //System.out.println(colorX.render("@|red Hello|@ gggg @|green World|@") );
 
         } catch (Exception e) {           
         }

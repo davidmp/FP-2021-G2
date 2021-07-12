@@ -1,0 +1,1 @@
+java -jar ProyectoVentasG2-1.0-SNAPSHOT.jar

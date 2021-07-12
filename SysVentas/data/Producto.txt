@@ -1,0 +1,3 @@
+P1	Manzana	Kilos	C1	3.5	0.004	20.0
+P2	Pera	Kilos	C1	4.0	0.005	10.0
+P3	Platano	Unidad	C1	3.5	0.003	20.0

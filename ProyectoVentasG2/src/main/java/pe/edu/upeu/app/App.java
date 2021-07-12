@@ -11,7 +11,10 @@ import pe.edu.upeu.modelo.CategoriaTO;
 import pe.edu.upeu.modelo.ProductoTO;
 import pe.edu.upeu.util.LeerTeclado;
 import pe.edu.upeu.util.UtilsX;
-
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.Color.*;
 /**
  * Hello world!
  *
@@ -60,8 +63,11 @@ public class App {
                 break;
             }
             if(opcion!=0){
-                System.out.println("\nDesea seguir probando: ");
-                opcion=lt.leer(0, mensaje);
+                if(lt.leer("", "\nDesea seguir probando SI=S/NO=N:").toUpperCase().charAt(0)=='S'){
+                    opcion=lt.leer(0, mensaje);
+                }else{
+                    opcion=0;
+                }                
             }
             
         }while(opcion!=0);        
@@ -82,19 +88,13 @@ public class App {
         }
     }
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
 
     public static void main( String[] args ){
-        System.out.println(ANSI_RED + "This text is red!" + ANSI_RESET);
-
+        AnsiConsole.systemInstall();
+        Ansi colorX=new Ansi();
+        System.out.println(colorX.bgBrightGreen().fgBlue().a("***************Ingreso al Sistema***********").reset());
+        //AnsiConsole.systemInstall();
+        //System.out.println(colorX.render("@|red Hello|@ gggg @|green World|@") );
         validarAcceso();       
         //menuMain(); 
         //new MainGUI();
